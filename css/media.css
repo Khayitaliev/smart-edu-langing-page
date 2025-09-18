@@ -1,0 +1,14 @@
+@media (max-width:750px) {
+    .logo__title{
+        display: none;
+    }
+}
+
+@media (max-width:520px){
+    .nav{
+        display: none;
+    }
+    .burger-menu{
+        display: block;
+    }
+}

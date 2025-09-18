@@ -87,10 +87,14 @@
     -o-transition: all .3s linear;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 body{
     font-family: 'Poppins', sans-serif;
     background-color: var(--cl-bg);
-    height: 10000px;
+    height: 1000px;
 }
 
 img{
@@ -101,9 +105,20 @@ img{
 
 .container{
     max-width: 1230px;
-    margin: auto;
-    padding: 0 5px;
+    margin: 0 auto;
+    padding: 0 2%;
 }
+
+/* Style For Header */
+header{
+    width: 100%;
+    padding: 2% 0;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: var(--cl-bg);
+}
+
 
 .header__wrapper,
 .hero__wrapper,
@@ -113,25 +128,19 @@ img{
     align-items: center;
 }
 
-.header__wrapper{
-    padding:2% 0;
-}
-
-.hero__wrapper{
-    gap: 0 5%;
-   
-}
-
 .brand-inner{
     gap: 50px;
 }
 
-.nav__list{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 50px;
+.brand__logo span{
+    font-size: clamp(0.5rem,2vw,1.5rem);
 }
+ 
+.brand__logo span , 
+.list__link{
+    color: var(--cl-black);
+}
+
 .brand__logo{
     display: flex;
     justify-content: center;
@@ -139,15 +148,22 @@ img{
     gap: 10px;
 }
 
-
-
 .brand__logo img{
     width: 50px;
 }
 
-.brand__logo span{
-    font-size: 1.5rem;
+
+.nav__list{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: clamp(1rem,2vw,3rem);
 }
+
+.list__link{
+    font-size: clamp(0.8rem,2vw,1rem);
+}
+
 
 /* Burger menu */
 .burger-menu{
@@ -212,6 +228,11 @@ img{
 .active .line-2{
   width: 0;
 }
+
+.hero__wrapper{
+    gap: 0 5%;
+}
+
 
 /* End Burger Menu */
 
