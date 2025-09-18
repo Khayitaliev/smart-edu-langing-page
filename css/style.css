@@ -102,6 +102,10 @@ img{
     max-width: 100%;
     height: auto;
 }
+a,
+button{
+    cursor: pointer;
+}
 
 .container{
     max-width: 1230px;
@@ -119,6 +123,7 @@ header{
     background-color: var(--cl-bg);
     padding:  3%;
 }
+
 .header__wrapper,
 .hero__wrapper{
     display: flex;
@@ -128,6 +133,7 @@ header{
 
 .brand__logo span{
     font-size: clamp(1rem,2vw,1.5rem);
+    font-weight: 600;
 }
  
 .brand__logo span , 
@@ -145,7 +151,6 @@ header{
 .brand__logo img{
     width: 50px;
 }
-
 
 .nav__list{
     display: flex;
@@ -227,7 +232,15 @@ header{
     gap: 0 5%;
 }
 
+.hero-title{
+    font-size: clamp(1.5rem,5vw,3rem);
+}
 
+.hero__text{
+    font-size: clamp(0.6rem,2vw,1rem);
+    max-width: 500px;
+    line-height: clamp(1rem,3vw,2rem);
+}
 /* End Burger Menu */
 
 .course__inner{

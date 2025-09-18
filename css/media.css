@@ -16,3 +16,13 @@
         font-size: 2rem;
     }
 }
+
+@media (max-width:450px) {
+    .hero__wrapper{
+        flex-wrap: wrap;
+        text-align: center;
+    }
+    .hero__banner img{
+        max-width: 300px;
+    }
+}
