@@ -14,4 +14,14 @@
     .nav__brand span{
         display: block;
     }
+    .hero__wrapper{
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        text-align: center ;
+        
+    }
+    .hero__banner__inner img{
+        max-width: 350px;
+    }
 }
