@@ -1,0 +1,296 @@
+/* Root */
+:root{
+    --cl-bg:#f6f7fb;
+    --cl-white:#fff;
+    --cl-black:#000;
+    
+}
+
+/* Fonts */
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins-Black.ttf);
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins-ExtraBold.ttf);
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url(../fonts/Poppins-Bold.ttf) ;
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins-SemiBold.ttf);
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins-Medium.ttf);
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins-Regular.ttf);
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins-Light.ttf);
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins-ExtraLight.ttf);
+    font-style: normal;
+    font-weight: 200;
+    font-display: swap;
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    transition: all .3s linear;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cl-bg);
+    height: 10000px;
+}
+
+img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.container{
+    max-width: 1230px;
+    margin: auto;
+    padding: 0 5px;
+}
+
+.header__wrapper,
+.hero__wrapper,
+.brand-inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__wrapper{
+    padding:2% 0;
+}
+
+.hero__wrapper{
+    gap: 0 5%;
+   
+}
+
+.brand-inner{
+    gap: 50px;
+}
+
+.nav__list{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 50px;
+}
+.brand__logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+.brand__logo img{
+    width: 50px;
+}
+
+.brand__logo span{
+    font-size: 1.5rem;
+}
+
+/* Burger menu */
+.burger-menu{
+    display: none;
+    cursor: pointer;
+    position: relative;   
+}
+
+.burger-menu span{
+    --bg-burger:#000;
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 4px;
+    background-color: var(--bg-burger);
+    border-radius: 0.8rem;
+    -webkit-border-radius: 0.8rem;
+    -moz-border-radius: 0.8rem;
+    -ms-border-radius: 0.8rem;
+    -o-border-radius: 0.8rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+}
+
+.burger-menu .line-1{
+    transform: translate(-50%,-10px);
+    -webkit-transform: translate(-50%,-10px);
+    -moz-transform: translate(-50%,-10px);
+    -ms-transform: translate(-50%,-10px);
+    -o-transform: translate(-50%,-10px);
+}
+
+.burger-menu .line-3{
+    transform: translate(-50%,6px);
+    -webkit-transform: translate(-50%,6px);
+    -moz-transform: translate(-50%,6px);
+    -ms-transform: translate(-50%,6px);
+    -o-transform: translate(-50%,6px);
+}
+
+.active .line-1{
+    transform: translate(-50%,-50%) rotate(-45deg);
+    -webkit-transform: translate(-50%,-50%) rotate(-45deg);
+    -moz-transform: translate(-50%,-50%) rotate(-45deg);
+    -ms-transform: translate(-50%,-50%) rotate(-45deg);
+    -o-transform: translate(-50%,-50%) rotate(-45deg);
+}
+
+.active .line-3{
+    transform: translate(-50%,-50%) rotate(45deg);
+    -webkit-transform: translate(-50%,-50%) rotate(45deg);
+    -moz-transform: translate(-50%,-50%) rotate(45deg);
+    -ms-transform: translate(-50%,-50%) rotate(45deg);
+    -o-transform: translate(-50%,-50%) rotate(45deg);
+}
+
+.active .line-2{
+  width: 0;
+}
+
+/* End Burger Menu */
+
+.course__inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 0 1rem;
+}
+
+.course__inner::-webkit-scrollbar{
+    display: none;
+}
+
+.english-card__inner,
+.russian-card__inner,
+.math-card__inner,
+.korean-card__inner,
+.web-card__inner{
+    background-color: var(--cl-white);
+    min-width: 300px;
+    height: 350px;
+  
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    
+    box-shadow: 0px 3px 8px 0px rgba(34, 60, 80, 0.14);
+    position: relative;
+}
+
+.course__title{
+    margin: 2rem 0 ;
+}
+
+.card__rounded-logo{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: 0px 3px 8px 0px #D2BBF8;
+    background-image: url(/images/card-flags/ingliz-tili.svg);
+    position: absolute;
+    top: -50px;
+
+
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+/* .english-card__inner{
+    background-image: url(/images/card-flags/ingliz-tili.svg);
+    background-size: 100px, auto;
+    background-repeat: no-repeat;
+    background-position: right -10px bottom;
+} */
+
+
+
+/* background-image: url('../images/bg-img.png'),
+                    url('../images/ellipse.png');
+    background-size: 700px  ,auto ;
+    background-repeat: no-repeat;
+    background-position: right -150px center,
+                        left -120px bottom -160px;   */
+
+                        display: flex;
+   .food__cards_wrapper::-webkit-scrollbar{
+    display: none;
+}
+
+.food__card{
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    position: relative;
+    padding: 32px;
+    width:330px ;
+}
