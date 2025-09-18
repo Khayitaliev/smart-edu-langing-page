@@ -1,28 +1,18 @@
-@media (max-width:750px) {
-    .logo__title{
+@media (max-width:720px) {
+    .nav__brand span{
         display: none;
     }
 }
 
-@media (max-width:520px){
-    .nav{
-        display: none;
+@media (max-width:520px) {
+    header{
+        padding: 0 3%;
     }
+    .nav__brand span,
     .burger-menu{
         display: block;
     }
-    .logo__title{
-        display: block;
-        font-size: 2rem;
-    }
-}
-
-@media (max-width:450px) {
-    .hero__wrapper{
-        flex-wrap: wrap;
-        text-align: center;
-    }
-    .hero__banner img{
-        max-width: 300px;
+    .nav{
+        display: none;
     }
 }
