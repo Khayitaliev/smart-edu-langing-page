@@ -16,12 +16,19 @@
     }
     .hero__wrapper{
         flex-direction: column-reverse;
-        justify-content: center;
-        align-items: center;
-        text-align: center ;
-        
     }
     .hero__banner__inner img{
         max-width: 350px;
+    }
+    .hero__slogan{
+        max-width: 300px;
+        
+    }
+    .hero-content__inner{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
     }
 }
