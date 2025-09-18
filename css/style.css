@@ -1,6 +1,6 @@
 /* Root */
 :root{
-    --cl-bg:#f6f7fb;
+    --cl-bg:#F9FAFF;
     --cl-white:#fff;
     --cl-black:#000;
     
@@ -234,17 +234,17 @@ img{
 .korean-card__inner,
 .web-card__inner{
     background-color: var(--cl-white);
-    min-width: 300px;
-    height: 350px;
-  
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
-    
     box-shadow: 0px 3px 8px 0px rgba(34, 60, 80, 0.14);
-    position: relative;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    padding: 32px;
+    min-width:250px ;
+    height: 300px;
 }
 
 .course__title{
@@ -257,40 +257,9 @@ img{
     border-radius: 50%;
     box-shadow: 0px 3px 8px 0px #D2BBF8;
     background-image: url(/images/card-flags/ingliz-tili.svg);
-    position: absolute;
     top: -50px;
-
-
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
-}
-/* .english-card__inner{
-    background-image: url(/images/card-flags/ingliz-tili.svg);
-    background-size: 100px, auto;
-    background-repeat: no-repeat;
-    background-position: right -10px bottom;
-} */
-
-
-
-/* background-image: url('../images/bg-img.png'),
-                    url('../images/ellipse.png');
-    background-size: 700px  ,auto ;
-    background-repeat: no-repeat;
-    background-position: right -150px center,
-                        left -120px bottom -160px;   */
-
-                        display: flex;
-   .food__cards_wrapper::-webkit-scrollbar{
-    display: none;
-}
-
-.food__card{
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
-    position: relative;
-    padding: 32px;
-    width:330px ;
 }
