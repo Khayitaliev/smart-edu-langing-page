@@ -96,6 +96,7 @@ body{
     font-family: 'Poppins', sans-serif;
     background-color: var(--cl-bg);
     height: 1000px;
+    position: relative;
 }
 
 img{
@@ -111,10 +112,13 @@ button,
 }
 
 .container{
-    max-width: 1230px;
+    max-width: 1440px;
     margin: 0 auto;
     padding: 0 5px;
 }
+
+/* Style For Header */
+
 header{
     position: fixed;
     top: 0;
@@ -125,7 +129,8 @@ header{
 
 .header__wrapper,
 .nav__brand,
-.hero__wrapper{
+.hero__wrapper,
+.about-us__wrapper{
     display: flex;
     justify-content: space-between;
     align-items: center;  
@@ -144,7 +149,8 @@ header{
 }
 
 .nav__brand span{
-    font-size: clamp(0.8rem,2vw,1.5rem);
+    font-size: clamp(1.5rem,2vw,1.8rem);
+    font-weight: 600;
 }
 
 .brand-icon{
@@ -152,10 +158,14 @@ header{
 }
 
 .list__link{
-    color: var(--cl-text);
-    font-size: clamp(1rem,1.5vw,1.5rem);
+    font-size: clamp(1rem,1.5vw,1.2rem);
     position: relative;
     font-weight: 400;
+}
+
+.nav__brand span,
+.list__link{
+      color: var(--cl-text);
 }
 
 
@@ -192,10 +202,12 @@ header{
     color: var(--cl-white);
 }
 
+/* End Style For Header */
+
 /* Style For Courses */
 
 .courses__title{
-    font-size: clamp(1rem,3vw,3rem);
+    font-size: clamp(2rem,3vw,3rem);
     text-align: center;
 }
 
@@ -218,14 +230,21 @@ header{
     -o-border-radius: 10px;
     min-width: 300px;
     height: 400px;
-    background-color: #fff;
     scroll-snap-align: start;
     scroll-snap-stop: always;
     cursor: pointer;
     padding: 1rem;
     scroll-snap-align: center;
    scroll-snap-stop: always;
+   box-shadow: 3px 2px 20px -18px rgba(145, 99, 217, 0.6);
+   background-color: var(--cl-white);
 }
+
 .courses-card__inner::-webkit-scrollbar{
     display: none;
 }
+
+.about-us__wrapper{
+
+}
+
