@@ -11,4 +11,7 @@
     .burger-menu{
         display: block;
     }
+    .nav__brand span{
+        display: block;
+    }
 }
