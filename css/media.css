@@ -11,4 +11,8 @@
     .burger-menu{
         display: block;
     }
+    .logo__title{
+        display: block;
+        font-size: 2rem;
+    }
 }

@@ -126,10 +126,8 @@ header{
     align-items: center;
 }
 
-
-
 .brand__logo span{
-    font-size: clamp(0.5rem,2vw,1.5rem);
+    font-size: clamp(1rem,2vw,1.5rem);
 }
  
 .brand__logo span , 
