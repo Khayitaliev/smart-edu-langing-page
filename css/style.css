@@ -117,20 +117,16 @@ header{
     top: 0;
     z-index: 1;
     background-color: var(--cl-bg);
+    padding:  3%;
 }
-
-
 .header__wrapper,
-.hero__wrapper,
-.brand-inner{
+.hero__wrapper{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.brand-inner{
-    gap: 50px;
-}
+
 
 .brand__logo span{
     font-size: clamp(0.5rem,2vw,1.5rem);
