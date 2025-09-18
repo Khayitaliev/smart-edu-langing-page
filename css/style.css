@@ -202,6 +202,7 @@ header{
 .courses-card__inner{
     display: flex;
     align-items: center;
+    justify-content: center;
     overflow-x: scroll;
     gap: 30px;
     scroll-snap-type: x mandatory;
@@ -222,6 +223,8 @@ header{
     scroll-snap-stop: always;
     cursor: pointer;
     padding: 1rem;
+    scroll-snap-align: center;
+   scroll-snap-stop: always;
 }
 .courses-card__inner::-webkit-scrollbar{
     display: none;
