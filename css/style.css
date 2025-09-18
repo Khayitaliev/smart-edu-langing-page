@@ -267,11 +267,14 @@ header{
 /* End Style For Header */
 
 /* Style For Courses */
+.courses__wrapper{
+    padding: 2rem 0;
+}
 
 .courses__title{
     font-size: clamp(1.8rem,3vw,3rem);
     text-align: center;
-    margin: 1rem 0;
+    margin-bottom: 1rem;
 }
 
 .courses-card__inner{
@@ -291,17 +294,13 @@ header{
     -o-border-radius: 10px;
     min-width: 220px;
     cursor: pointer;
-    padding: 2rem;
+    padding: 2rem ;
     box-shadow: 3px 2px 20px -18px rgba(145, 99, 217, 0.6);
     background-color: var(--cl-white);
     scroll-snap-align: center;
     scroll-snap-stop: always;
-   
     height: 300px;
-
      text-align: center;
-    scroll-snap-align:center;
-    scroll-snap-stop: always;
     
 }
 
@@ -311,8 +310,8 @@ header{
 
 
 .courses-card img{
-   width: 150px;
-   height: 150px;
+   width: 130px;
+   height: 130px;
    border-radius: 50%;
    -webkit-border-radius: 50%;
    -moz-border-radius: 50%;
