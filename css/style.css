@@ -291,7 +291,7 @@ header{
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
-    min-width: 230px;
+    min-width: 220px;
     height: 300px;
     scroll-snap-align: start;
     scroll-snap-stop: always;
