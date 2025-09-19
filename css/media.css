@@ -1,4 +1,18 @@
 
+@media (max-width: 768px) {
+  .courses-card__inner {
+    gap: 0.5rem;
+  }
+  .courses-card {
+    min-width: 180px;
+    height: 260px;
+    padding: 1rem;
+  }
+  .courses-card img {
+    width: 100px;
+    height: 100px;
+  }
+}
 
 @media (max-width:700px) {
     .nav__brand span{
