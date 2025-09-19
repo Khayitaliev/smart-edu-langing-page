@@ -372,6 +372,7 @@ header{
     flex-wrap: wrap; /* responsivlik uchun */
   }
 
+
   .about-banner__inner {
     flex: 1 1 400px;
     display: flex;
@@ -404,3 +405,61 @@ header{
 
 /* End Style For About Us */
 
+/* Style For Mentors */
+#mentors {
+  padding: 3rem 1rem;
+}
+
+.mentors__title {
+  text-align: center;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.mentors-carousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+}
+
+.mentors-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.mentor-card {
+  flex: 0 0 250px; /* card kengligi */
+  min-height: 320px;
+  background: #f8f8f8;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+  padding: 1.5rem;
+  scroll-snap-align: center;
+  text-align: center;
+}
+
+.mentor-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #9163d9; /* mos rang */
+}
+
+.mentor__name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.mentor__role {
+  font-size: .95rem;
+  color: #666;
+}

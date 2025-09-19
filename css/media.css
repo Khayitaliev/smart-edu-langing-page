@@ -21,6 +21,11 @@
   .courses-card img {
     width: 100px;
     height: 100px;
+    
+  }
+  .mentor-card {
+    flex: 0 0 200px;
+    min-height: 280px;
   }
 }
 
@@ -114,3 +119,17 @@
     }
   }
 
+
+
+
+
+@media (max-width: 480px) {
+  .mentor-card {
+    flex: 0 0 80%;
+    min-height: auto;
+  }
+  .mentor-card img {
+    width: 100px;
+    height: 100px;
+  }
+}
