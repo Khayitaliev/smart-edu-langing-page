@@ -338,9 +338,6 @@ header{
     gap:  0 50px;
 }
 
-.about-banner__inner img{
-    min-width: 600px;
-}
 
 .about__title{
     font-size: clamp(1.8rem,3vw,3rem);
