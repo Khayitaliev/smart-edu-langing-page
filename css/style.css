@@ -333,7 +333,7 @@ header{
 }
 
 /* Style For About Us */
-#about{
+/* #about{
     padding: 3rem 0 ;
 }
 
@@ -341,6 +341,9 @@ header{
     gap:  0 50px;
 }
 
+.about-content__inner{
+    max-width: 500px;
+}
 
 .about__title{
     font-size: clamp(1.8rem,3vw,3rem);
@@ -348,6 +351,56 @@ header{
     margin-bottom: 1rem;
 }
 
+.about__slogan{
+    font-size: clamp(0.8rem,1.5vw,1rem);
+    text-align: center;
+    line-height: 1.2rem;
+    max-width: 400px;
+} */
+
+  #about {
+    padding: 3rem 1rem;
+  }
+
+  .about-us__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* responsivlik uchun */
+  }
+
+  .about-banner__inner {
+    flex: 1 1 400px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .about-banner__inner img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    object-fit: cover;
+  }
+
+  .about-content__inner {
+    flex: 1 1 400px;
+  }
+
+  .about__title {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .about__slogan {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }
 
 /* End Style For About Us */
 

@@ -1,4 +1,14 @@
 
+@media (max-width: 992px) {
+    .about-us__wrapper {
+      flex-direction: column;
+      text-align: center;
+    }
+    .about-content__inner {
+      padding: 1rem;
+    }
+  }
+
 @media (max-width: 768px) {
   .courses-card__inner {
     gap: 0.5rem;
@@ -18,7 +28,21 @@
     .nav__brand span{
         display: none;
     }
+    .about-us__wrapper{
+        flex-direction: column;
+        gap: 50px 0;
+    }
 }
+
+  /* Mobile */
+  @media (max-width: 576px) {
+    .about__slogan {
+      font-size: 0.95rem;
+    }
+    .about-banner__inner img {
+      max-width: 100%;
+    }
+  }
 
 @media (max-width:550px) {
     .burger-menu{
@@ -79,3 +103,14 @@
         flex-direction: column;
     }
 }
+
+@media (max-width: 992px) {
+    .about-us__wrapper {
+      flex-direction: column;
+      text-align: center;
+    }
+    .about-content__inner {
+      padding: 1rem;
+    }
+  }
+
