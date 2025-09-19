@@ -1,13 +1,22 @@
-
 @media (max-width: 992px) {
-    .about-us__wrapper {
-      flex-direction: column;
-      text-align: center;
-    }
-    .about-content__inner {
-      padding: 1rem;
-    }
+  .about-us__wrapper {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem; /* qo‘shimcha bo‘sh joy, yaxshi ko‘rinishi uchun */
   }
+  .about-content__inner {
+    padding: 1rem;
+  }
+  .about-banner__inner img {
+    max-width: 100%;
+    height: auto;
+  }
+   .about-us__wrapper,
+  .mentors-wrapper {
+    gap: 1.5rem;   /* 50px emas, kichikroq gap qo‘yamiz */
+    margin-bottom: 2rem;
+  }
+}
 
 @media (max-width: 768px) {
   .courses-card__inner {
@@ -21,11 +30,16 @@
   .courses-card img {
     width: 100px;
     height: 100px;
-    
   }
   .mentor-card {
     flex: 0 0 200px;
+    max-width: 200px;
     min-height: 280px;
+    max-height: 300px;
+  }
+  .mentor-card img {
+    width: 100px;
+    height: 100px;
   }
 }
 
@@ -109,27 +123,26 @@
     }
 }
 
-@media (max-width: 992px) {
-    .about-us__wrapper {
-      flex-direction: column;
-      text-align: center;
-    }
-    .about-content__inner {
-      padding: 1rem;
-    }
-  }
-
-
-
-
-
 @media (max-width: 480px) {
   .mentor-card {
-    flex: 0 0 80%;
-    min-height: auto;
+    flex: 0 0 160px;
+    max-width: 160px;
+    min-height: 240px;
+    max-height: 260px;
+    padding: 1rem;
   }
   .mentor-card img {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
+  }
+  .mentor__name {
+    font-size: 1rem;
+  }
+  .mentor__role {
+    font-size: .8rem;
   }
 }
+
+
+
+  

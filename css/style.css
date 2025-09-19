@@ -95,7 +95,6 @@ html{
 body{
     font-family: 'Poppins', sans-serif;
     background-color: var(--cl-bg);
-    height: 1000px;
     position: relative;
 }
 
@@ -407,31 +406,29 @@ header{
 
 /* Style For Mentors */
 #mentors {
-  padding: 3rem 1rem;
+  padding: 3rem 0;
+  text-align: center;
 }
 
 .mentors__title {
-  text-align: center;
   font-size: clamp(1.8rem, 3vw, 2.5rem);
-  margin-bottom: 2rem;
-  color: #333;
+  margin-bottom: 1.5rem;
 }
 
-.mentors-carousel {
+.mentors-card__inner {
   display: flex;
   gap: 1rem;
-  overflow-x: auto;
+  overflow: hidden;
   scroll-snap-type: x mandatory;
-  padding-bottom: 1rem;
-}
-
-.mentors-carousel::-webkit-scrollbar {
-  display: none;
+  justify-content: center;
+  position: relative;
 }
 
 .mentor-card {
-  flex: 0 0 250px; /* card kengligi */
+  flex: 0 0 250px;
+  max-width: 250px;
   min-height: 320px;
+  max-height: 340px;
   background: #f8f8f8;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
@@ -443,6 +440,12 @@ header{
   padding: 1.5rem;
   scroll-snap-align: center;
   text-align: center;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.mentor-card.active {
+  transform: scale(1.05);
+  box-shadow: 0 6px 25px rgba(145, 99, 217, 0.4);
 }
 
 .mentor-card img {
@@ -450,16 +453,37 @@ header{
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #9163d9; /* mos rang */
+  border: 3px solid #9163d9;
 }
 
 .mentor__name {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #333;
 }
 
 .mentor__role {
-  font-size: .95rem;
-  color: #666;
+  font-size: .9rem;
+  color: #555;
+}
+
+/* Dots */
+.mentors-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: .5rem;
+}
+
+.mentors-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+  display: block;
+  transition: background .3s ease, transform .3s ease;
+}
+
+.mentors-dots span.active {
+  background: #9163d9;
+  transform: scale(1.3);
 }
