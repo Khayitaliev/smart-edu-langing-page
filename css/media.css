@@ -1,128 +1,142 @@
+/* Tablet va kichikroq (992px dan past) */
 @media (max-width: 992px) {
   .about-us__wrapper {
     flex-direction: column;
     text-align: center;
-    gap: 2rem; /* qo‘shimcha bo‘sh joy, yaxshi ko‘rinishi uchun */
+    gap: 1.5rem; 
+    margin-bottom: 2rem;
   }
+
   .about-content__inner {
     padding: 1rem;
   }
+
   .about-banner__inner img {
     max-width: 100%;
     height: auto;
   }
-   .about-us__wrapper,
+
   .mentors-wrapper {
-    gap: 1.5rem;   /* 50px emas, kichikroq gap qo‘yamiz */
+    flex-direction: column;
+    gap: 1.5rem;
     margin-bottom: 2rem;
   }
 }
 
+/* Planshet (768px dan past) */
 @media (max-width: 768px) {
   .courses-card__inner {
     gap: 0.5rem;
   }
+
   .courses-card {
     min-width: 180px;
     height: 260px;
     padding: 1rem;
   }
+
   .courses-card img {
     width: 100px;
     height: 100px;
   }
+
   .mentor-card {
     flex: 0 0 200px;
     max-width: 200px;
     min-height: 280px;
     max-height: 300px;
   }
+
   .mentor-card img {
     width: 100px;
     height: 100px;
   }
 }
 
-@media (max-width:700px) {
-    .nav__brand span{
-        display: none;
-    }
-    .about-us__wrapper{
-        flex-direction: column;
-        gap: 50px 0;
-    }
-}
-
-  /* Mobile */
-  @media (max-width: 576px) {
-    .about__slogan {
-      font-size: 0.95rem;
-    }
-    .about-banner__inner img {
-      max-width: 100%;
-    }
+/* Kichik planshet (700px dan past) */
+@media (max-width: 700px) {
+  .nav__brand span {
+    display: none;
   }
 
-@media (max-width:550px) {
-    .burger-menu{
-        display: block;
-    }
-    .nav__brand span{
-        display: block;
-    }
-    .hero__wrapper{
-        flex-direction: column-reverse;
-    }
-    .hero__banner__inner img{
-        max-width: 350px;
-    }
-    .hero__slogan{
-        max-width: 300px;
-    }
-    .hero-content__inner{
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-    }
-    .card__slogan{
-        font-size: 0.8rem;
-    }
-
-    .nav{
-        position: absolute;
-        background-color: var(--cl-bg);
-        width: 100%;
-        right: 0;
-        top: 60px;
-        padding: 50px;
-        transform-origin: right top;
-        transform: scale(0);
-        -webkit-transform: scale(0);
-        -moz-transform: scale(0);
-        -ms-transform: scale(0);
-        -o-transform: scale(0);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 30px;
-    }
-
-    .active{
-        transform: scale(1);
-        -webkit-transform: scale(1);
-        -moz-transform: scale(1);
-        -ms-transform: scale(1);
-        -o-transform: scale(1);
-    }
-    .nav__list{
-        display: flex;
-        flex-direction: column;
-    }
+  .about-us__wrapper {
+    flex-direction: column;
+    gap: 2rem; /* avvalgi 50px o‘rniga aniqroq */
+  }
 }
 
+/* Telefon (576px dan past) */
+@media (max-width: 576px) {
+  .about__slogan {
+    font-size: 0.95rem;
+  }
+
+  .about-banner__inner img {
+    max-width: 100%;
+  }
+}
+
+/* Telefon kichik (550px dan past) */
+@media (max-width: 550px) {
+  .burger-menu {
+    display: block;
+  }
+
+  .nav__brand span {
+    display: block;
+  }
+
+  .hero__wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .hero__banner__inner img {
+    max-width: 350px;
+  }
+
+  .hero__slogan {
+    max-width: 300px;
+  }
+
+  .hero-content__inner {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card__slogan {
+    font-size: 0.8rem;
+  }
+
+  .nav {
+    position: absolute;
+    background-color: var(--cl-bg);
+    width: 100%;
+    right: 0;
+    top: 60px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+    transform: scale(0);
+    transform-origin: right top;
+  }
+
+  .nav.active {
+    transform: scale(1);
+  }
+
+  .nav__list {
+    flex-direction: column;
+  }
+}
+
+/* Juda kichik ekran (480px dan past) */
 @media (max-width: 480px) {
   .mentor-card {
     flex: 0 0 160px;
@@ -131,18 +145,17 @@
     max-height: 260px;
     padding: 1rem;
   }
+
   .mentor-card img {
     width: 80px;
     height: 80px;
   }
+
   .mentor__name {
     font-size: 1rem;
   }
+
   .mentor__role {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
 }
-
-
-
-  

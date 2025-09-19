@@ -487,3 +487,12 @@ header{
   background: #9163d9;
   transform: scale(1.3);
 }
+
+#about {
+  padding: 3rem 1rem;
+  margin-bottom: 2rem; /* 2rem bo‘shliq qoldiradi */
+}
+
+#mentors {
+  padding: 3rem 0;
+}
