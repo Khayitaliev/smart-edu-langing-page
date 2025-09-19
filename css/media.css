@@ -1,3 +1,5 @@
+
+
 @media (max-width:700px) {
     .nav__brand span{
         display: none;
@@ -5,9 +7,6 @@
 }
 
 @media (max-width:550px) {
-    nav{
-        display: none;
-    }
     .burger-menu{
         display: block;
     }
