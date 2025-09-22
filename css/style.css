@@ -432,3 +432,105 @@ header{
     box-shadow: 0 6px 16px rgba(21,101,192,0.4);
 }
 /* End Style For About Section */ 
+
+/* Style For Mentor Section */
+.mentors-slider {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden; /* Qolgan cardlarni cheklash */
+}
+
+/* ===================== Slider Track ===================== */
+.mentors-slider__track {
+  display: flex;
+  transition: transform 0.5s ease;
+  gap: 20px; /* Cardlar orasidagi bo'shliq */
+}
+
+/* ===================== Mentor Card ===================== */
+.mentor-card {
+  flex: 0 0 280px; /* Barqaror kenglik */
+  height: 360px; /* Barqaror balandlik */
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  text-align: center;
+  padding: 1rem;
+  margin: 0 10px;
+  transition: transform 0.5s ease;
+  transform: scale(0.9); /* Aktiv bo'lmagan cardlar kichikroq */
+}
+
+.mentor-card.active {
+  transform: scale(1); /* Aktiv card kattalashadi */
+}
+
+.mentor-card img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* ===================== Navigation Buttons ===================== */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: #1565C0;
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.slider-btn:hover {
+  background-color: #0d47a1;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.slider-btn.prev {
+  left: 0;
+}
+
+.slider-btn.next {
+  right: 0;
+}
+
+/* ===================== Slider Dots ===================== */
+.slider-dots {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.slider-dots span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.slider-dots span.active {
+  background-color: #1565C0;
+  transform: scale(1.2);
+}
+
+#mentors{
+    padding: 100px 0;
+    border: 1px solid #000;
+}
+.mentor-carousel__title{
+    font-size: clamp(1.5rem,3vw,2.5rem);
+    margin-bottom: 30px;
+}
+/* End Stytle For Mentor Section */
