@@ -1,3 +1,7 @@
+@media (max-width: 900px) {
+    .mentor-card { flex: 0 0 220px; height: 300px; }
+    .mentor-card img { width: 120px; height: 120px; }
+}
 
 @media (max-width:700px) {
   .hero__wrapper{
@@ -78,3 +82,10 @@
     }
 }
 
+
+
+@media (max-width: 600px) {
+    .mentor-card { flex: 0 0 180px; height: 250px; }
+    .mentor-card img { width: 100px; height: 100px; }
+    .slider-btn { padding: 10px 14px; font-size: 1rem; }
+}
