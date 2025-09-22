@@ -240,8 +240,38 @@ header{
 
 .list__link{
     font-size: clamp(0.5rem,1.5vw,1.2rem);
+    position: relative;
 }
 
+
+.list__link::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    top: 30px;
+    left: 0;
+    transform-origin: left;
+    transform:scaleX(0) ;
+    -webkit-transform:scaleX(0) ;
+    -moz-transform:scaleX(0) ;
+    -ms-transform:scaleX(0) ;
+    -o-transform:scaleX(0) ;
+    background-color: var(--cl-primary);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.list__link:hover::before{
+    transform: scaleX(1);
+    -webkit-transform: scaleX(1);
+    -moz-transform: scaleX(1);
+    -ms-transform: scaleX(1);
+    -o-transform: scaleX(1);
+}
 
 /* Style For Hero */
 .hero__wrapper{
@@ -282,9 +312,9 @@ header{
 }
 
 .hero-button:hover {
-  background-color: #0D47A1; /* yanada to‘q ko‘k */
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(21,101,192,0.4);
+    background-color: #0D47A1; /* yanada to‘q ko‘k */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(21,101,192,0.4);
 }
 /* End Style For Hero */
 
@@ -307,16 +337,20 @@ header{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-      width: 280px;       /* qat’iy kenglik */
-      height: 360px;      /* qat’iy balandlik */
-      background: var(--cl-white);
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      text-align: center;
-      transition: transform 0.3s ease;
-      flex-shrink: 0;     /* sliderda siqilib ketmasin */
-      padding: 1rem;
-    }
+        width: 280px;
+        /*qat’iykenglik*/height: 360px;
+        /*qat’iybalandlik*/background: var(--cl-white);
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        text-align: center;
+        transition: transform 0.3s ease;
+        flex-shrink: 0;
+        /*sliderdasiqilibketmasin*/padding: 1rem;
+        -webkit-transition: transform 0.3s ease;
+        -moz-transition: transform 0.3s ease;
+        -ms-transition: transform 0.3s ease;
+        -o-transition: transform 0.3s ease;
+}
 
     .card img{
       width: 150px; 
