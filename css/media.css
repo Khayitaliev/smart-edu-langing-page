@@ -68,5 +68,13 @@
       .courses-slider__inner::-webkit-scrollbar{
         display: none;
       }
+      .about__wrapper {
+        flex-direction: column;
+        text-align: center;
+      }
+
+    .about__image img {
+        max-width: 100%;
+    }
 }
 
