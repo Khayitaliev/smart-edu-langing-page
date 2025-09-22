@@ -151,7 +151,7 @@ header{
     top: 0;
     width: 100%;
     background-color: var(--cl-bg);
-    padding: 2% ;   
+    padding: 2%  4%;   
 }
 
 .header__wrapper,
@@ -168,11 +168,11 @@ header{
 }
 
 .brand__wrapper{
-    gap: 0 30px;
+    gap: clamp(15px,2vw,30px);
 }
 
 .brand__wrapper img{
-    max-width: 60px;
+    max-width: clamp(30px,8vw,50px);
     
 }
 
@@ -237,13 +237,14 @@ header{
 }
 
 .brand__wrapper span{
-    font-size: clamp(1rem,3vw,1.7rem);
+    font-size: clamp(1.3rem,3vw,1.7rem);
     font-weight: 600;
 }
 
 .list__link{
     font-size: clamp(0.5rem,1.5vw,1.2rem);
 }
+
 
 /* Style For Hero */
 .hero__wrapper{

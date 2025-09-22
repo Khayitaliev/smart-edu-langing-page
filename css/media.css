@@ -1,9 +1,6 @@
-@media (max-width:900px) {
-  .brand__wrapper img{
-    max-width: 40px;
-  }
-}
+
 @media (max-width:700px) {
+  
   .hero__wrapper{
     margin: 1%;
   }
