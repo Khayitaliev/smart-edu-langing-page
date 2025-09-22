@@ -1,6 +1,5 @@
 
 @media (max-width:700px) {
-
   .hero__wrapper{
     margin: 1%;
   }
@@ -21,6 +20,7 @@
   }
   
    .nav__list {
+    background-color: var(--cl-bg);
     position: fixed;
     top: 0;
     left: 0;
