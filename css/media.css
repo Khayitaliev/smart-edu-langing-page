@@ -4,18 +4,21 @@
   }
 }
 @media (max-width:700px) {
+  .hero__wrapper{
+    margin: 1%;
+  }
   .nav{
     display: none;
   }
   #desktop-burger{
     display: block;
   }
-  
+
   .hero__wrapper{
     flex-direction: column-reverse;
   }
   .hero-banner__inner img{
-    max-width: 400px;
+    max-width: clamp(200px,80vw,450px);
   }
   .hero-text__inner{
     text-align: center;
