@@ -287,3 +287,44 @@ header{
   box-shadow: 0 6px 16px rgba(21,101,192,0.4);
 }
 /* End Style For Hero */
+
+/* Style For Courses */
+.courses-slider__inner{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card{
+      width: 280px;       /* qat’iy kenglik */
+      height: 360px;      /* qat’iy balandlik */
+      background: var(--cl-white);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      overflow: hidden;   /* ortiqcha chiqib ketmasligi uchun */
+      text-align: center;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;     /* sliderda siqilib ketmasin */
+    }
+
+    .card img{
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card h3{
+      margin: 15px 10px;
+      font-size: 1.2rem;
+      color: var(--cl-primary);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;  /* matn uzun bo‘lsa ham chiqib ketmasin */
+    }
+
+    .card:hover{
+      transform: translateY(-5px);
+    }
+
+/* End Style For Courses */
