@@ -1,11 +1,38 @@
 /* Root */
 :root{
-    --cl-bg:#EFEFFF;
+    --cl-bg:#F5F9FF;
     --cl-white:#fff;
     --cl-black:#000;
     --cl-purple:#9163D9;
-    --cl-text:#12100C;
+    --cl-text:#0A033C;
+    --cl-primary:#1565C0 ;
 }
+
+/* Primary (asosiy elementlar, tugmalar):
+
+#1565C0 (chuqur ko‘k)
+
+yoki #1E88E5 (yorqin ko‘k)
+
+Secondary (qo‘shimcha tugmalar, linklar):
+
+#4FC3F7 (och cyan)
+
+yoki #00ACC1 (to‘qroq turquoise)
+
+Text (matn):
+
+Asosiy matn: #212121 (quyuq kulrang, qora emas)
+
+Ikkinchi darajali matn: #555555
+
+Linklar: #1565C0
+
+Accent (urg‘u beriladigan rang):
+
+#FFB300 (yorqin sariq) – ko‘kka kontrast bo‘ladi
+
+yoki #FF7043 (apelsin rang) – iliqlik qo‘shadi */
 
 /* Fonts */
 @font-face {
@@ -123,14 +150,19 @@ header{
     top: 0;
     width: 100%;
     background-color: var(--cl-bg);
-    
+    padding: 1%;   
 }
 
 .header__wrapper,
-.brand__wrapper{
+.brand__wrapper,
+.nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.nav{
+    gap: 0 30px;
 }
 
 .brand__wrapper{
@@ -138,7 +170,7 @@ header{
 }
 
 .brand__wrapper img{
-    max-width: 50px;
+    max-width: 60px;
     
 }
 
@@ -149,7 +181,60 @@ header{
     gap: 0 50px ;
 }
 
+
 .burger-menu{
     display: block;
-    position: relative;
+    cursor: pointer;
+    position: relative;   
+}
+
+.burger-menu span{
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 4px;
+    background-color: var(--cl-text);
+    border-radius: 0.8rem;
+    -webkit-border-radius: 0.8rem;
+    -moz-border-radius: 0.8rem;
+    -ms-border-radius: 0.8rem;
+    -o-border-radius: 0.8rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+}
+
+.burger-menu span:nth-child(1){
+    transform: translate(-50%,-10px);
+    -webkit-transform: translate(-50%,-10px);
+    -moz-transform: translate(-50%,-10px);
+    -ms-transform: translate(-50%,-10px);
+    -o-transform: translate(-50%,-10px);
+}
+
+.burger-menu span:nth-child(3){
+    transform: translate(-50%,6px);
+    -webkit-transform: translate(-50%,6px);
+    -moz-transform: translate(-50%,6px);
+    -ms-transform: translate(-50%,6px);
+    -o-transform: translate(-50%,6px);
+}
+
+#mobile-burger , 
+#desktop-burger{
+    display: none;
+}
+
+.brand__wrapper span ,
+.list__link{
+    color: var(--cl-text);
+}
+
+.brand__wrapper span{
+    font-size: clamp(1rem,3vw,1.7rem);
+    font-weight: 600;
 }
