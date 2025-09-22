@@ -88,4 +88,10 @@
     .mentor-card { flex: 0 0 180px; height: 250px; }
     .mentor-card img { width: 100px; height: 100px; }
     .slider-btn { padding: 10px 14px; font-size: 1rem; }
+     .faq-question {
+    font-size: 1rem;
+    }
+    .faq-answer p {
+      font-size: 0.9rem;
+    }
 }
