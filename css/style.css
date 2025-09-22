@@ -707,3 +707,128 @@ header{
 }
 
 /* End Style For Contact Section */
+
+/* Style For Footer */
+footer {
+    background-color: #E3F2FD; /* hero rangiga mos */
+    padding: 50px 20px 20px 20px;
+    color: #0A033C;
+}
+
+/* -------- Top Section -------- */
+.footer__top {
+    display: flex;
+    flex-wrap: wrap; /* responsive uchun */
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto 30px auto;
+}
+
+/* -------- Brand Section -------- */
+.footer__brand {
+    flex: 1 1 300px;
+    text-align: left;
+}
+.footer__brand img {
+    max-width: 60px;
+    margin-bottom: 15px;
+}
+.footer__brand p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* -------- BETA SHINE EFFECT -------- */
+.footer__beta {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 2px 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    background: #FF5252;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+.footer__beta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.5), rgba(255,255,255,0));
+    transform: skewX(-20deg);
+    animation: shine 2s infinite;
+}
+@keyframes shine {
+    0% { left: -75%; }
+    100% { left: 125%; }
+}
+
+/* -------- Links Section -------- */
+.footer__links,
+.footer__contact {
+    flex: 1 1 200px;
+}
+.footer__links h4,
+.footer__contact h4 {
+    font-size: 1.2rem;
+    color: #1565C0;
+    margin-bottom: 15px;
+}
+.footer__links ul {
+    list-style: none;
+}
+.footer__links ul li {
+    margin-bottom: 10px;
+}
+.footer__links ul li a {
+    transition: color 0.3s;
+}
+.footer__links ul li a:hover {
+    color: #0A033C;
+    font-weight: 500;
+}
+
+/* -------- Contact Section -------- */
+.footer__contact p {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+/* -------- Social Icons -------- */
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+.social-icons a {
+    font-size: 1.5rem;
+    transition: transform 0.3s, color 0.3s;
+}
+.social-icons a:hover {
+    transform: scale(1.2);
+}
+.social-icons a.facebook { color: #4267B2; }
+.social-icons a.instagram { color: #C13584; }
+.social-icons a.telegram { color: #0088cc; }
+.social-icons a.linkedin { color: #0077b5; }
+
+/* -------- Bottom Section -------- */
+.footer__bottom {
+    text-align: center;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding-top: 15px;
+    font-size: 0.9rem;
+    color: #555555;
+}
+.footer__bottom a {
+    color: #1565C0;
+    transition: color 0.3s;
+}
+.footer__bottom a:hover {
+    color: #0A033C;
+}

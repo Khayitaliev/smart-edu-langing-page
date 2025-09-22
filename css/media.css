@@ -3,6 +3,22 @@
     .mentor-card img { width: 120px; height: 120px; }
 }
 
+@media(max-width: 768px){
+    .footer__top {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+        text-align: center;
+    }
+    .footer__brand,
+    .footer__links,
+    .footer__contact {
+        flex: 1 1 100%;
+    }
+    .social-icons {
+        justify-content: center;
+    }
+}
 @media (max-width:700px) {
   .hero__wrapper{
     margin: 1%;
@@ -78,6 +94,7 @@
     .about__image img {
         max-width: 100%;
     }
+    
 }
 
 
@@ -108,23 +125,3 @@
 
 
 
-
-@media (max-width: 700px) {
-    .courses-slider__inner {
-        justify-content: flex-start; /* start dan boshlanadi */
-        overflow-x: auto;             /* horizontal scroll */
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch; /* smooth scroll iOS */
-        padding-bottom: 10px;
-    }
-
-    .card {
-        scroll-snap-align: center;
-        width: 230px;
-        height: 300px;
-    }
-
-    .courses-slider__inner::-webkit-scrollbar {
-        display: none;
-    }
-}
