@@ -298,13 +298,13 @@ header{
     .card{
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
       width: 280px;       /* qat’iy kenglik */
       height: 360px;      /* qat’iy balandlik */
       background: var(--cl-white);
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      overflow: hidden;   /* ortiqcha chiqib ketmasligi uchun */
       text-align: center;
       transition: transform 0.3s ease;
       flex-shrink: 0;     /* sliderda siqilib ketmasin */
@@ -329,6 +329,10 @@ header{
 
     .card:hover{
       transform: translateY(-5px);
+    }
+
+    .card__slogan{
+        font-size: clamp(0.8rem,2.5vw,1rem);
     }
 
 /* End Style For Courses */
