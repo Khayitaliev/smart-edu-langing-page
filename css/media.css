@@ -1,6 +1,6 @@
 
 @media (max-width:700px) {
-  
+
   .hero__wrapper{
     margin: 1%;
   }
@@ -10,7 +10,6 @@
   #desktop-burger{
     display: block;
   }
-
   .hero__wrapper{
     flex-direction: column-reverse;
   }
@@ -20,4 +19,32 @@
   .hero-text__inner{
     text-align: center;
   }
+  
+   .nav__list {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--cl-bg);
+    transform: translateY(-100%);
+    transition: transform 0.4s ease;
+    z-index: 1001;
+  }
+
+  .nav__list.show {
+    transform: translateY(0);
+  }
+
+  .nav {
+    display: block;
+  }
+
+  #desktop-burger {
+    display: block;
+  }
 }
+

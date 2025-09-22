@@ -151,7 +151,7 @@ header{
     top: 0;
     width: 100%;
     background-color: var(--cl-bg);
-    padding: 2%  4%;   
+    padding: 2%  ;   
 }
 
 .header__wrapper,
@@ -184,47 +184,44 @@ header{
 }
 
 
-.burger-menu{
-    display: block;
-    cursor: pointer;
-    position: relative;   
+/* 🔹 Burger style */
+.burger-menu {
+  width: 30px;
+  height: 22px;
+  position: relative;
+  cursor: pointer;
+  display: none; /* faqat media queryda ko‘rinadi */
+  z-index: 1002;
 }
 
-.burger-menu span{
-    position: absolute;
-    display: block;
-    width: 30px;
-    height: 4px;
-    background-color: var(--cl-text);
-    border-radius: 0.8rem;
-    -webkit-border-radius: 0.8rem;
-    -moz-border-radius: 0.8rem;
-    -ms-border-radius: 0.8rem;
-    -o-border-radius: 0.8rem;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
-    -moz-transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-    -o-transform: translate(-50%,-50%);
+.burger-menu span {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: var(--cl-text);
+  border-radius: 5px;
+  left: 0;
+  transition: all 0.4s ease;
 }
 
-.burger-menu span:nth-child(1){
-    transform: translate(-50%,-10px);
-    -webkit-transform: translate(-50%,-10px);
-    -moz-transform: translate(-50%,-10px);
-    -ms-transform: translate(-50%,-10px);
-    -o-transform: translate(-50%,-10px);
+.burger-menu span:nth-child(1) { top: 0; }
+.burger-menu span:nth-child(2) { top: 9px; }
+.burger-menu span:nth-child(3) { top: 18px; }
+
+/* 🔹 Active bo‘lganda X ga aylanadi */
+.burger-menu.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 9px;
+}
+.burger-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+.burger-menu.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 9px;
 }
 
-.burger-menu span:nth-child(3){
-    transform: translate(-50%,6px);
-    -webkit-transform: translate(-50%,6px);
-    -moz-transform: translate(-50%,6px);
-    -ms-transform: translate(-50%,6px);
-    -o-transform: translate(-50%,6px);
-}
+
 
 #mobile-burger , 
 #desktop-burger{
