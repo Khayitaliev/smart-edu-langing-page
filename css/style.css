@@ -296,6 +296,9 @@ header{
     }
 
     .card{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       width: 280px;       /* qat’iy kenglik */
       height: 360px;      /* qat’iy balandlik */
       background: var(--cl-white);
@@ -305,12 +308,13 @@ header{
       text-align: center;
       transition: transform 0.3s ease;
       flex-shrink: 0;     /* sliderda siqilib ketmasin */
+      padding: 1rem;
     }
 
     .card img{
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
+      width: 150px; 
+      height: auto;
+    
       display: block;
     }
 
