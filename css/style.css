@@ -496,8 +496,8 @@ header{
     background: #0d47a1;
     transform: translateY(-50%) scale(1.05);
 }
-.slider-btn.prev { left: 10px; }
-.slider-btn.next { right: 10px; }
+.slider-btn.prev { left: 0px; }
+.slider-btn.next { right: 0px; }
 
 /* ===================== Dots ===================== */
 .slider-dots {
