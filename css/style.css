@@ -321,61 +321,67 @@ header{
 /* End Style For Hero */
 
 /* Style For Courses */
-    #courses{
-        padding: 30px 0;
-    }
-    .courses-title{
-        font-size: clamp(1.5rem,3vw,2.5rem);
-        margin-bottom: 30px;
-    }
-    .courses-slider__inner{
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 280px;
-        /*qat’iykenglik*/height: 360px;
-        /*qat’iybalandlik*/background: var(--cl-white);
-        border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-        text-align: center;
-        transition: transform 0.3s ease;
-        flex-shrink: 0;
-        /*sliderdasiqilibketmasin*/padding: 1rem;
-        -webkit-transition: transform 0.3s ease;
-        -moz-transition: transform 0.3s ease;
-        -ms-transition: transform 0.3s ease;
-        -o-transition: transform 0.3s ease;
+ #courses {
+    padding: 30px 0;
 }
 
-    .card img{
-      width: 150px; 
-      height: auto;
-      display: block;
-    }
+.courses-title {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    margin-bottom: 30px;
+    text-align: center;
+}
 
-    .card h3{
-      margin: 15px 10px;
-      font-size: 1.3rem;
-      color: var(--cl-primary);
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;  /* matn uzun bo‘lsa ham chiqib ketmasin */
-    }
+/* Slider container */
+.courses-slider__inner {
+    display: flex;
+    justify-content: center; /* Desktop: markazga */
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: nowrap;
+    overflow-x: hidden; /* Desktop: scroll yo'q */
+    padding-bottom: 10px;
+    transition: transform 0.3s ease;
+}
 
-    .card:hover{
-      transform: translateY(-5px);
-    }
+/* Card */
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 280px;
+    height: 360px;
+    background: var(--cl-white);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    padding: 1rem;
+}
 
-    .card__slogan{
-        font-size: clamp(0.8rem,2.5vw,1rem);
-    }
+.card img {
+    width: 150px;
+    height: auto;
+    display: block;
+}
+
+.card h3 {
+    margin: 15px 10px;
+    font-size: 1.3rem;
+    color: var(--cl-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card__slogan {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+}
 
 /* End Style For Courses */
 

@@ -49,28 +49,26 @@
 
   #desktop-burger {
     display: block;
-  }
-  .list__link{
-    font-size: clamp(1rem,3vw,1.5rem);
-  }
-    .courses-slider__inner{
-        display: flex;
-        overflow-x: auto;
-        gap: 15px;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 10px;
+    }
+    .list__link{
+      font-size: clamp(1rem,3vw,1.5rem);
+    }
+        .courses-slider__inner {
+          justify-content: flex-start; /* start dan boshlanadi */
+          overflow-x: auto;             /* horizontal scroll */
+          scroll-snap-type: x mandatory;
+          -webkit-overflow-scrolling: touch; /* smooth scroll iOS */
+          padding-bottom: 10px;
       }
 
-      .card{
-        scroll-snap-align: center;
-        margin: 0 auto;
-        width: 230px;
-        height: 300px;
+      .card {
+          scroll-snap-align: center;
+          width: 230px;
+          height: 300px;
       }
 
-      .courses-slider__inner::-webkit-scrollbar{
-        display: none;
+      .courses-slider__inner::-webkit-scrollbar {
+          display: none;
       }
       .about__wrapper {
         flex-direction: column;
@@ -111,3 +109,22 @@
 
 
 
+@media (max-width: 700px) {
+    .courses-slider__inner {
+        justify-content: flex-start; /* start dan boshlanadi */
+        overflow-x: auto;             /* horizontal scroll */
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch; /* smooth scroll iOS */
+        padding-bottom: 10px;
+    }
+
+    .card {
+        scroll-snap-align: center;
+        width: 230px;
+        height: 300px;
+    }
+
+    .courses-slider__inner::-webkit-scrollbar {
+        display: none;
+    }
+}
