@@ -434,41 +434,41 @@ header{
 /* End Style For About Section */ 
 
 /* Style For Mentor Section */
+/* Mentors Slider */
 .section-slider {
-    padding: 15px;
-    margin: 30px auto;
-}
-
-/* ===================== Container ===================== */
-.container-slider {
     position: relative;
-    overflow: hidden; /* Yonidagi cardlar hidden bo'lishi uchun */
+    margin: 40px 0;
 }
 
-/* ===================== Slider Track ===================== */
+.container-slider {
+    overflow: hidden;
+    width: 100%;
+}
+
 .mentors-slider__track {
     display: flex;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease-in-out;
+    gap: 20px;
 }
 
-/* ===================== Cards ===================== */
 .mentor-card {
     flex: 0 0 280px;
     height: 360px;
-    background: #f9f9f9;
+    background: #fff;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     text-align: center;
     padding: 1rem;
-    margin: 0 10px;
-    transition: transform 0.5s ease, opacity 0.5s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
     transform: scale(0.9);
-    opacity: 0.5;
+    opacity: 0.6;
 }
+
 .mentor-card.active {
     transform: scale(1);
     opacity: 1;
 }
+
 .mentor-card img {
     width: 150px;
     height: 150px;
@@ -477,7 +477,6 @@ header{
     margin-bottom: 10px;
 }
 
-/* ===================== Navigation Buttons ===================== */
 .slider-btn {
     position: absolute;
     top: 50%;
@@ -492,18 +491,25 @@ header{
     font-size: 1.2rem;
     transition: background 0.3s, transform 0.2s;
 }
+
 .slider-btn:hover {
     background: #0d47a1;
     transform: translateY(-50%) scale(1.05);
 }
-.slider-btn.prev { left: 0px; }
-.slider-btn.next { right: 0px; }
 
-/* ===================== Dots ===================== */
+.slider-btn.prev {
+    left: 0;
+}
+
+.slider-btn.next {
+    right: 0;
+}
+
 .slider-dots {
     text-align: center;
     margin-top: 20px;
 }
+
 .slider-dots span {
     display: inline-block;
     width: 12px;
@@ -514,27 +520,38 @@ header{
     cursor: pointer;
     transition: background 0.3s, transform 0.3s;
 }
+
 .slider-dots span.active {
     background: #1565C0;
-    transform: scale(1.2);
+    transform: scale(1.3);
 }
 
+/* Responsive */
+@media(max-width: 900px){
+    .mentor-card { flex: 0 0 220px; height: 300px; }
+    .mentor-card img { width: 120px; height: 120px; }
+}
 
-  #courses{
-        padding: 30px 0;
-    }
-    .mentor-carousel__title{
-        font-size: clamp(1.5rem,3vw,2.5rem);
-        margin: 30px 0;
-    }
+@media(max-width: 600px){
+    .mentor-card { flex: 0 0 180px; height: 250px; }
+    .mentor-card img { width: 100px; height: 100px; }
+    .slider-btn { padding: 10px 14px; font-size: 1rem; }
+}
+
 
 /* Style For FAQ */
-.faq-section {
-  padding: 50px 20px;
-  background: #E3F2FD; /* Hero rangiga o'xshash */
+
+.faq__wrapper {
+ padding: 50px 20px;
+ background: #E3F2FD;
+ border-radius: 0.5rem;
+ -webkit-border-radius: 0.5rem;
+ -moz-border-radius: 0.5rem;
+ -ms-border-radius: 0.5rem;
+ -o-border-radius: 0.5rem;
 }
 
-.faq-section h2 {
+.faq__wrapper h2 {
   text-align: center;
   color: #1565C0;
   margin-bottom: 30px;
@@ -593,3 +610,94 @@ header{
   line-height: 1.6;
 }
 /* End Style For FAQ */
+
+/* Style For Contact Section */
+/* Section fon va sarlavha */
+#contact{
+    padding: 30px 0;
+}
+.contact__wrapper {
+  background: var(--cl-bg);
+}
+
+.contact__wrapper h2 {
+  text-align: center;
+  color: #1565C0;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+/* Forma konteyner */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Form input va select group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #0A033C;
+}
+
+/* Input va select dizayni */
+.form-group input,
+.form-group select {
+  padding: 14px 16px;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+/* Input va select focus effekt */
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  box-shadow: 0 6px 18px rgba(21,101,192,0.3);
+}
+
+/* Select dropdown arrow va dizayn */
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12'><path d='M0 4l6 6 6-6H0z' fill='%231565C0'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 12px 12px;
+  cursor: pointer;
+}
+
+/* Submit tugma */
+.contact-form button {
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: #1565C0;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.contact-form button:hover {
+  background: #0d47a1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(21,101,192,0.4);
+}
+
+/* End Style For Contact Section */
