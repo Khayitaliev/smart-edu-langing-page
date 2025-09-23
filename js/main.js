@@ -103,3 +103,31 @@ faqItems.forEach(item => {
         }
     });
 });
+
+
+const form = document.getElementById('contact-form');
+const status = document.getElementById('form-status');
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxxekudj2qk1j3jhWedvkMoR1YX93G909BAq64iFWxuNfk27wKnlZi5wZG0VWcCGUEpLw/exec";
+
+form.addEventListener('submit', e => {
+    e.preventDefault(); // sahifani yangilanishini to‘xtatish
+    const formData = new FormData(form);
+
+    fetch(SCRIPT_URL, { method: 'POST', body: formData })
+        .then(response => response.json())
+        .then(result => {
+            if (result.status === "success") {
+                status.innerText = "✅ Muvaffaqiyatli yuborildi!";
+                status.style.color = "green";
+                form.reset();
+                setTimeout(() => status.innerText = "", 4000);
+            } else {
+                status.innerText = "❌ Xatolik yuz berdi!";
+                status.style.color = "red";
+            }
+        })
+        .catch(error => {
+            status.innerText = "❌ Xatolik yuz berdi!";
+            status.style.color = "red";
+        });
+});
