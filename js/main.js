@@ -93,36 +93,23 @@ faqItems.forEach(item => {
 
 // ===== Contact Form =====
 const form = document.querySelector('.contact-form');
-const status = document.createElement('p');
-status.id = 'form-status';
-form.appendChild(status);
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxxekudj2qk1j3jhWedvkMoR1YX93G909BAq64iFWxuNfk27wKnlZi5wZG0VWcCGUEpLw/exec";
+const SCRIPT_URL = "https://YOUR_SERVER_URL/form"; // botdagi endpoint
 
 form.addEventListener('submit', e => {
     e.preventDefault();
-
-    // Alert tezkor ko‘rsatish
-    status.innerText = "✅ Muvaffaqiyatli yuborildi!";
-    status.style.color = "green";
-    form.reset();
-
-    // Serverga yuborish
     const formData = new FormData(form);
+
     fetch(SCRIPT_URL, { method: 'POST', body: formData })
-        .then(resp => resp.text())
+        .then(response => response.json())
         .then(result => {
-            let data;
-            try { data = JSON.parse(result); } catch (e) { data = { status: "success" }; }
-            if (data.status !== "success") {
-                status.innerText = "❌ Xatolik yuz berdi!";
-                status.style.color = "red";
+            if (result.status === "success") {
+                alert("✅ Muvaffaqiyatli yuborildi!");
+                form.reset();
+            } else {
+                alert("❌ Xatolik yuz berdi! " + (result.message || ""));
             }
         })
         .catch(err => {
-            status.innerText = "❌ Xatolik yuz berdi!";
-            status.style.color = "red";
+            alert("❌ Xatolik yuz berdi!");
         });
 });
-
-// ===== Responsive resize =====
-window.addEventListener('resize', () => goToSlide(currentIndex));

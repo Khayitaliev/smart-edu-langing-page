@@ -1,75 +1,92 @@
-import logging
+# bot.py
 from aiogram import Bot, Dispatcher, types
-from aiogram.utils import executor
+from aiogram.filters import Command
+from aiohttp import web
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-from datetime import datetime
+import asyncio
+from threading import Thread
 
-# 🔑 Bot tokeningiz
-API_TOKEN = "8280370388:AAGjrOXHT7ejFjScjtqD-GJIaKy1RKAn26c"
+# ================= CONFIG =================
+BOT_TOKEN = "8280370388:AAGjrOXHT7ejFjScjtqD-GJIaKy1RKAn26c"  # Sizning bot token
+ADMIN_ID = 1115076314  # Sizning Telegram ID
+SPREADSHEET_ID = "18mLwn6i26dgKLaNE2lKvI88I_pANjQlm3rjaWQm_lnQ"  # Google Sheets ID
+ALLOWED_USERS = [ADMIN_ID]  # Avval ruxsat olganlar
 
-# 🔐 Google Sheets ulanish
-scope = ["https://spreadsheets.google.com/feeds",
-         "https://www.googleapis.com/auth/drive"]
-
-# bu faylni oldin yuklab olgansiz (credentials.json)
-creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
+# Google Sheets ulanish
+scope = ["https://spreadsheets.google.com/feeds","https://www.googleapis.com/auth/drive"]
+creds = ServiceAccountCredentials.from_json_keyfile_name("service_account.json", scope)
 client = gspread.authorize(creds)
+sheet = client.open_by_key(SPREADSHEET_ID).sheet1
 
-# Google Sheets fayl nomi
-spreadsheet = client.open("Oquvchilar")  # Google Sheets nomi shu bo‘lishi kerak
-worksheet = spreadsheet.sheet1
+# ================= BOT =================
+bot = Bot(token=BOT_TOKEN)
+dp = Dispatcher()
 
-# Logging
-logging.basicConfig(level=logging.INFO)
+# ================= /start =================
+@dp.message(Command("start"))
+async def start(message: types.Message):
+    if message.from_user.id in ALLOWED_USERS:
+        await message.answer("✅ Xush kelibsiz! Siz botdan foydalana olasiz.")
+    else:
+        await message.answer("❌ Siz ruxsat olmagansiz. Admin bilan bog'laning.")
 
-bot = Bot(token=API_TOKEN)
-dp = Dispatcher(bot)
+# ================= /allow =================
+@dp.message(Command("allow"))
+async def allow_user(message: types.Message):
+    if message.from_user.id != ADMIN_ID:
+        return
+    args = message.text.split()
+    if len(args) != 2 or not args[1].isdigit():
+        await message.reply("❌ Foydalanuvchi ID kiriting: /allow <chat_id>")
+        return
+    user_id = int(args[1])
+    if user_id not in ALLOWED_USERS:
+        ALLOWED_USERS.append(user_id)
+        await message.reply(f"✅ Foydalanuvchi {user_id}ga ruxsat berildi.")
+        try:
+            await bot.send_message(user_id, "✅ Sizga botdan foydalanish ruxsati berildi!")
+        except:
+            pass
+    else:
+        await message.reply("❌ Foydalanuvchi allaqachon ruxsat olgan.")
 
-
-# 🚀 /start buyrug‘i
-@dp.message_handler(commands=["start"])
-async def send_welcome(message: types.Message):
-    await message.reply("Assalomu alaykum! 👋\nMenga o‘quvchi ma’lumotlarini yuboring.\n"
-                        "Format:\n\nIsm, Email, Telefon, Kurs")
-
-
-# 📥 Ma’lumot qabul qilish
-@dp.message_handler()
-async def save_data(message: types.Message):
+# ================= Webhook / Form handler =================
+async def handle_form(request):
     try:
-        # Ma’lumotni bo‘lish (vergul orqali)
-        data = message.text.split(",")
-        if len(data) < 4:
-            await message.reply("❌ Ma’lumot to‘liq emas!\n"
-                                "Format: Ism, Email, Telefon, Kurs")
-            return
+        data = await request.post()  # FormData
+        name = data.get("name")
+        email = data.get("email")
+        phone = data.get("phone")
+        course = data.get("course")
+        if not (name and email and phone and course):
+            return web.json_response({"status": "error", "message": "Ma'lumot yetarli emas"})
+        
+        # Google Sheets-ga yozish
+        sheet.append_row([name, email, phone, course])
+        
+        # Telegramga yuborish ruxsat olganlarga
+        text = f"📥 Yangi forma yuborildi!\n\n👤 Ism: {name}\n📧 Email: {email}\n📱 Telefon: {phone}\n📚 Kurs: {course}"
+        for user_id in ALLOWED_USERS:
+            try:
+                await bot.send_message(user_id, text)
+            except:
+                pass
 
-        name = data[0].strip()
-        email = data[1].strip()
-        phone = data[2].strip()
-        course = data[3].strip()
-        date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-        # Google Sheetsga yozish
-        worksheet.append_row([name, email, phone, course, date])
-
-        # Sizga tasdiq yuboradi
-        await message.reply("✅ Ma’lumot saqlandi!\n"
-                            f"👤 Ism: {name}\n📧 Email: {email}\n📱 Telefon: {phone}\n📘 Kurs: {course}")
-
-        # O‘qituvchiga yoki sizga ham xabar yuboradi
-        admin_id = 1115076314  # sizning chat_id
-        await bot.send_message(admin_id, f"📥 Yangi o‘quvchi qo‘shildi:\n\n"
-                                         f"👤 Ism: {name}\n"
-                                         f"📧 Email: {email}\n"
-                                         f"📱 Telefon: {phone}\n"
-                                         f"📘 Kurs: {course}\n"
-                                         f"🕒 Sana: {date}")
-
+        return web.json_response({"status": "success"})
     except Exception as e:
-        await message.reply(f"❌ Xatolik: {e}")
+        return web.json_response({"status": "error", "message": str(e)})
 
+# ================= Aiohttp server =================
+app = web.Application()
+app.router.add_post("/form", handle_form)
 
+# ================= BOT START =================
+async def start_bot():
+    await dp.start_polling()
+
+# ================= RUN BOTH =================
 if __name__ == "__main__":
-    executor.start_polling(dp, skip_updates=True)
+    loop = asyncio.get_event_loop()
+    Thread(target=lambda: loop.run_until_complete(start_bot())).start()
+    web.run_app(app, host="0.0.0.0", port=8080)
