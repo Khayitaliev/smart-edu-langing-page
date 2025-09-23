@@ -104,8 +104,7 @@ faqItems.forEach(item => {
     });
 });
 
-
-const form = document.getElementById('contact-form');
+const form = document.querySelector('.contact-form');
 const status = document.getElementById('form-status');
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxxekudj2qk1j3jhWedvkMoR1YX93G909BAq64iFWxuNfk27wKnlZi5wZG0VWcCGUEpLw/exec";
 
