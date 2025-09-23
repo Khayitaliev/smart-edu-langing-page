@@ -1,3 +1,9 @@
+@media (min-width: 1025px) {
+  .courses-slider__inner {
+    justify-content: center;  /* katta ekranda markazda */
+    overflow-x: hidden;       /* scroll olib tashlanadi */
+  }
+}
 @media(max-width: 900px){
     .mentor-card { flex: 0 0 220px; height: 300px; }
     .mentor-card img { width: 120px; height: 120px; }
