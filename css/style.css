@@ -335,6 +335,10 @@ header{
   padding: 10px;
 }
 
+.courses-slider__inner::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari, Opera */
+}
+
 /* ================================
    📌 CARD STYLE
 ==================================*/
@@ -381,6 +385,7 @@ header{
   align-items: center;
   justify-content: center;
 }
+
 
 /* End Style For Courses */
 
