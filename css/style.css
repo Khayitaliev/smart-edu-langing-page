@@ -559,7 +559,7 @@ header{
 
 .faq__wrapper {
  padding: 50px 20px;
- background: #E3F2FD;
+ background: var(--cl-bg);
  border-radius: 0.5rem;
  -webkit-border-radius: 0.5rem;
  -moz-border-radius: 0.5rem;
@@ -629,11 +629,10 @@ header{
 
 /* Style For Contact Section */
 /* Section fon va sarlavha */
-#contact{
-    padding: 30px 0;
-}
+
 .contact__wrapper {
-  background: var(--cl-bg);
+    padding: clamp(30px , 3vw,50px);
+  background: var(--cl-hero-bg);
 }
 
 .contact__wrapper h2 {
@@ -720,7 +719,7 @@ header{
 
 /* Style For Footer */
 footer {
-    background-color: #E3F2FD; /* hero rangiga mos */
+    background-color: var(--cl-bg); 
     padding: 50px 20px 20px 20px;
     color: #0A033C;
 }
@@ -822,10 +821,19 @@ footer {
 .social-icons a:hover {
     transform: scale(1.2);
 }
-.social-icons a.facebook { color: #4267B2; }
-.social-icons a.instagram { color: #C13584; }
-.social-icons a.telegram { color: #0088cc; }
-.social-icons a.linkedin { color: #0077b5; }
+.social-icons a.facebook { 
+    color: #4267B2; 
+}
+
+.social-icons a.instagram {
+     color: #C13584;
+     }
+.social-icons a.telegram {
+     color: #0088cc; 
+    }
+.social-icons a.linkedin { 
+    color: #0077b5;
+ }
 
 /* -------- Bottom Section -------- */
 .footer__bottom {
