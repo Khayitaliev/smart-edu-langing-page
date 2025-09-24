@@ -1,4 +1,3 @@
-
 @media(max-width: 768px){
     .footer__top {
         flex-direction: column;
@@ -15,99 +14,119 @@
         justify-content: center;
     }
 }
+
+/* ===== MOBILE 700px va past ===== */
 @media (max-width:700px) {
-  .hero__wrapper{
-    margin: 1%;
-  }
-  .nav{
-    display: none;
-  }
-  #desktop-burger{
-    display: block;
-  }
-  .hero__wrapper{
-    flex-direction: column-reverse;
-  }
-  .hero-banner__inner img{
-    max-width: clamp(200px,80vw,450px);
-  }
-  .hero-text__inner{
-    text-align: center;
-  }
-  
-   .nav__list {
-    background-color: var(--cl-bg);
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: var(--cl-bg);
-    transform: translateY(-100%);
-    transition: transform 0.4s ease;
-    z-index: 1001;
-    -webkit-transition: transform 0.4s ease;
-    -moz-transition: transform 0.4s ease;
-    -ms-transition: transform 0.4s ease;
-    -o-transition: transform 0.4s ease;
-}
-
-  .nav__list.show {
-    transform: translateY(0);
-  }
-
-  .nav {
-    display: block;
-  }
-
-  #desktop-burger {
-    display: block;
+    .hero__wrapper{
+        margin: 1%;
+        flex-direction: column-reverse;
     }
+    .nav{
+        display: none;
+    }
+    #desktop-burger{
+        display: block;
+    }
+    .hero-banner__inner img{
+        max-width: clamp(200px,80vw,450px);
+    }
+    .hero-text__inner{
+        text-align: center;
+    }
+
+    .nav__list {
+        background-color: var(--cl-bg);
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateY(-100%);
+        transition: transform 0.4s ease;
+        z-index: 1001;
+    }
+
+    .nav__list.show {
+        transform: translateY(0);
+    }
+
+    .nav {
+        display: block;
+    }
+
+    #desktop-burger {
+        display: block;
+    }
+
     .list__link{
-      font-size: clamp(1rem,3vw,1.5rem);
+        font-size: clamp(1rem,3vw,1.5rem);
     }
-        .courses-slider__inner {
-          justify-content: flex-start; /* start dan boshlanadi */
-          overflow-x: auto;             /* horizontal scroll */
-          scroll-snap-type: x mandatory;
-          -webkit-overflow-scrolling: touch; /* smooth scroll iOS */
-          padding-bottom: 10px;
-      }
 
-      .card {
-          scroll-snap-align: center;
-          width: 230px;
-          height: 300px;
-      }
+    /* ===== COURSES SLIDER MOBILE ===== */
+    .courses-slider__inner {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 20px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 10px;
+        justify-content: flex-start;
+    }
 
-      .courses-slider__inner::-webkit-scrollbar {
-          display: none;
-      }
-      .about__wrapper {
+    .card {
+        flex: 0 0 auto;
+        width: 230px;
+        height: 300px;
+        scroll-snap-align: center;
+    }
+
+    .courses-slider__inner::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* ===== ABOUT & HERO ===== */
+    .about__wrapper {
         flex-direction: column;
         text-align: center;
-      }
+    }
 
     .about__image img {
         max-width: 100%;
     }
-    
 }
 
-
-
+/* ===== SMALLER MOBILE 600px ===== */
 @media (max-width: 600px) {
-
-     .faq-question {
-    font-size: 1rem;
+    .faq-question {
+        font-size: 1rem;
     }
     .faq-answer p {
-      font-size: 0.9rem;
+        font-size: 0.9rem;
     }
-     .contact-form {
-    padding: 30px 20px;
-  }
+    .contact-form {
+        padding: 30px 20px;
+    }
+}
+
+/* ===== DESKTOP 701px dan katta ===== */
+@media(min-width: 701px) {
+    /* COURSES GRID DESKTOP */
+    .courses-slider__inner {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        overflow-x: unset;
+        scroll-snap-type: none;
+        justify-content: flex-start;
+    }
+
+    .card {
+        flex: 0 0 calc(33.333% - 20px);
+        width: auto;
+        height: 320px;
+    }
 }
