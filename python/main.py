@@ -1,40 +1,76 @@
 # bot.py
 import asyncio
 import logging
+import json
+import os
 from aiohttp import web
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 # =============== CONFIG ===============
-BOT_TOKEN = "8280370388:AAGjrOXHT7ejFjScjtqD-GJIaKy1RKAn26c"  # o'zgartiring
-ADMIN_ID = 1115076314  # o'zgartiring
-SPREADSHEET_ID = "18mLwn6i26dgKLaNE2lKvI88I_pANjQlm3rjaWQm_lnQ"  # o'zgartiring
-ALLOWED_USERS = {ADMIN_ID: "Admin"}  # {user_id: username}
+BOT_TOKEN = "8280370388:AAGjrOXHT7ejFjScjtqD-GJIaKy1RKAn26c"
+ADMIN_ID = 1115076314
+SPREADSHEET_ID = "18mLwn6i26dgKLaNE2lKvI88I_pANjQlm3rjaWQm_lnQ"
+USERS_FILE = "users.json"
+FORM_FILE = "form_data.json"
 
 # =============== LOGGING ===============
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# =============== TELEGRAM BOT SETUP ===============
+bot = Bot(token=BOT_TOKEN)
+dp = Dispatcher()
+
+# ======== PERSISTENT STORAGE =========
+def load_users():
+    if os.path.exists(USERS_FILE):
+        with open(USERS_FILE, "r") as f:
+            return json.load(f)
+    return {}
+
+def save_users():
+    with open(USERS_FILE, "w") as f:
+        json.dump(ALLOWED_USERS, f)
+
+def load_form_data():
+    if os.path.exists(FORM_FILE):
+        with open(FORM_FILE, "r") as f:
+            return json.load(f)
+    return []
+
+def save_form_data():
+    with open(FORM_FILE, "w") as f:
+        json.dump(FORM_DATA, f)
+
+ALLOWED_USERS = load_users()  # {user_id: username}
+FORM_DATA = load_form_data()   # [[name,email,phone,course,date], ...]
+
 # =============== GOOGLE SHEETS SETUP ===============
 sheet = None
 try:
-    scope = [
-        "https://spreadsheets.google.com/feeds",
-        "https://www.googleapis.com/auth/drive"
-    ]
+    scope = ["https://spreadsheets.google.com/feeds",
+             "https://www.googleapis.com/auth/drive"]
     creds = ServiceAccountCredentials.from_json_keyfile_name("service_account.json", scope)
     client = gspread.authorize(creds)
     sheet = client.open_by_key(SPREADSHEET_ID).sheet1
     logger.info("Google Sheets connected (sheet1).")
 except Exception as e:
     logger.exception("Google Sheets connection failed: %s", e)
-    sheet = None  # server hali ishlaydi, ammo sheet None bo'lishi mumkin
+    sheet = None
 
-# =============== TELEGRAM BOT SETUP ===============
-bot = Bot(token=BOT_TOKEN)
-dp = Dispatcher()
+# ======= RUXSAT SO‘RASH INLINE BUTTON =======
+async def ask_permission(user_id: int):
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [
+            InlineKeyboardButton(text="✅ Ruxsat berish", callback_data=f"allow_{user_id}"),
+            InlineKeyboardButton(text="❌ Rad etish", callback_data=f"deny_{user_id}")
+        ]
+    ])
+    await bot.send_message(user_id, "Botdan foydalanish uchun ruxsat so‘ralmoqda:", reply_markup=keyboard)
 
 # ---------------- /start ----------------
 @dp.message(Command("start"))
@@ -42,121 +78,125 @@ async def start(message: types.Message):
     user_id = message.from_user.id
     username = message.from_user.username or message.from_user.full_name or "Unknown"
 
-    # Agar ruxsat mavjud bo'lsa username yangilaymiz
-    if user_id in ALLOWED_USERS:
-        ALLOWED_USERS[user_id] = username
-        await message.answer("✅ Xush kelibsiz! Siz botdan foydalana olasiz.")
+    if str(user_id) in ALLOWED_USERS:
+        await message.answer("✅ Siz allaqachon ruxsat olgansiz.")
     else:
-        await message.answer("❌ Siz ruxsat olmagansiz. Admin bilan bog'laning.")
+        await ask_permission(user_id)
 
-# ---------------- /allow ----------------
-@dp.message(Command("allow"))
-async def allow_user(message: types.Message):
-    if message.from_user.id != ADMIN_ID:
+# ---------------- INLINE BUTTON CALLBACK ----------------
+@dp.callback_query()
+async def callback_handler(query: types.CallbackQuery):
+    await query.answer()  # 🔑 Har doim chaqirilishi kerak
+    data = query.data
+    user_id = query.from_user.id
+
+    # Admin ruxsat berish / rad etish tugmalari
+    if data.startswith("allow_") and user_id == ADMIN_ID:
+        target_id = data.split("_")[1]
+        ALLOWED_USERS[str(target_id)] = "Unknown"
+        save_users()
+        await bot.send_message(int(target_id), "✅ Sizga botdan foydalanish ruxsati berildi!")
+        await query.message.edit_text(f"✅ {target_id} foydalanuvchiga ruxsat berildi.")
+        return
+    elif data.startswith("deny_") and user_id == ADMIN_ID:
+        target_id = data.split("_")[1]
+        await bot.send_message(int(target_id), "❌ Sizga ruxsat berilmadi.")
+        await query.message.edit_text(f"❌ {target_id} foydalanuvchiga ruxsat rad qilindi.")
         return
 
-    args = message.text.split()
-    if len(args) != 2 or not args[1].isdigit():
-        await message.reply("❌ Foydalanuvchi ID kiriting: /allow <chat_id>")
+    # Foydalanuvchini ko‘rish tugmasi
+    if data.startswith("view_"):
+        target_id = data.split("_")[1]
+        username = ALLOWED_USERS.get(str(target_id), "Unknown")
+
+        # Shu foydalanuvchi form ma’lumotlarini chiqaramiz
+        user_forms = FORM_DATA  # barcha foydalanuvchilar form ma’lumotlarini ko‘radi
+        text = f"🔹 {username} (ID: {target_id})\n\n"
+        if user_forms:
+            for f in user_forms:
+                text += f"👤 {f[0]}, 📧 {f[1]}, 📱 {f[2]}, 📚 {f[3]}, 🕒 {f[4]}\n"
+        else:
+            text += "❌ Form ma’lumotlari yo‘q.\n"
+
+        keyboard = InlineKeyboardMarkup(row_width=1)
+        keyboard.add(
+            InlineKeyboardButton(text="❌ O'chirish", callback_data=f"delete_{target_id}")
+        )
+        await query.message.edit_text(text, reply_markup=keyboard)
         return
 
-    user_id = int(args[1])
-    if user_id not in ALLOWED_USERS:
-        ALLOWED_USERS[user_id] = "Unknown"
-        await message.reply(f"✅ Foydalanuvchi {user_id} ga ruxsat berildi.")
-        try:
-            await bot.send_message(user_id, "✅ Sizga botdan foydalanish ruxsati berildi!")
-        except Exception as e:
-            logger.warning("Xabar yuborilmadi %s: %s", user_id, e)
-    else:
-        await message.reply("❌ Foydalanuvchi allaqachon ruxsat olgan.")
-
-# ---------------- /users (faqat admin) ----------------
-@dp.message(Command("users"))
-async def show_users(message: types.Message):
-    if message.from_user.id != ADMIN_ID:
+    # Foydalanuvchini o‘chirish
+    if data.startswith("delete_") and user_id == ADMIN_ID:
+        target_id = data.split("_")[1]
+        if str(target_id) in ALLOWED_USERS:
+            del ALLOWED_USERS[str(target_id)]
+            save_users()
+            await query.message.edit_text(f"❌ {target_id} foydalanuvchi o‘chirildi.")
         return
-    total = len(ALLOWED_USERS)
-    text = f"👥 Botdan foydalanuvchilar soni: {total}\n\n"
+
+# ---------------- /clients ----------------
+@dp.message(Command("clients"))
+async def show_clients(message: types.Message):
+    if str(message.from_user.id) not in ALLOWED_USERS:
+        await message.reply("❌ Siz ruxsat olmagansiz.")
+        return
+
+    if not ALLOWED_USERS:
+        await message.reply("❌ Hozircha foydalanuvchi yo‘q.")
+        return
+
+    keyboard = InlineKeyboardMarkup(row_width=1)
     for uid, uname in ALLOWED_USERS.items():
-        text += f"🔹 {uname} (ID: {uid})\n"
-    await message.answer(text)
+        keyboard.add(
+            InlineKeyboardButton(text=f"{uname} (ID: {uid})", callback_data=f"view_{uid}")
+        )
+    await message.reply("👥 Bot foydalanuvchilari:", reply_markup=keyboard)
 
 # =============== WEB FORM HANDLER ===============
 async def append_to_sheet(row):
-    """
-    Synchronous gspread.append_row ishlashini thread'da bajaradi.
-    """
     if sheet is None:
-        raise RuntimeError("Google Sheets bilan ulanish mavjud emas.")
-    # gspread append_row - sinxron, shuning uchun threadga olamiz
+        logger.warning("Google Sheets bilan ulanish yo‘q.")
+        return False
     return await asyncio.to_thread(sheet.append_row, row)
 
 async def handle_form(request):
-    """
-    Qabul qiladi: form-data yoki application/json
-    Kutilgan maydonlar: name, email, phone, course
-    """
     try:
-        # Support JSON or form-data
         data = {}
         if request.content_type and "application/json" in request.content_type:
-            payload = await request.text()
-            try:
-                import json
-                data = json.loads(payload) if payload else {}
-            except Exception:
-                data = {}
+            data = await request.json()
         else:
             post = await request.post()
-            # post bir Mapping-like obyekti
             data = {k: post.get(k) for k in ("name", "email", "phone", "course")}
 
         name = (data.get("name") or "").strip()
         email = (data.get("email") or "").strip()
         phone = (data.get("phone") or "").strip()
         course = (data.get("course") or "").strip()
-
         if not (name and email and phone and course):
-            logger.info("Form ma'lumot yetarli emas: %s", data)
-            return web.json_response({"status": "error", "message": "Ma'lumot yetarli emas"}, headers={
-                "Access-Control-Allow-Origin": "*"
-            })
+            return web.json_response({"status": "error", "message": "Ma'lumot yetarli emas"}, headers={"Access-Control-Allow-Origin": "*"})
 
-        # Yozish satri: siz xohlagan ketma-ketlik (Ism, Email, Telefon, Kurs, Sana)
         import datetime
         date_str = datetime.datetime.now().isoformat(sep=" ", timespec="seconds")
         row = [name, email, phone, course, date_str]
 
-        try:
-            await append_to_sheet(row)
-            logger.info("Sheets ga yozildi: %s", row)
-        except Exception as e:
-            logger.exception("Sheets ga yozishda xatolik: %s", e)
-            # ammo davom etamiz: botga habar yuborishni ham tashlab qo'ymaymiz
-            return web.json_response({"status": "error", "message": str(e)}, headers={
-                "Access-Control-Allow-Origin": "*"
-            })
+        await append_to_sheet(row)
+        FORM_DATA.append(row)
+        save_form_data()
 
-        # Telegramga yuborish (ruxsat olganlarga)
+        # Barcha ruxsat olganlarga yuborish
         text = f"📥 Yangi forma yuborildi!\n\n👤 Ism: {name}\n📧 Email: {email}\n📱 Telefon: {phone}\n📚 Kurs: {course}\n🕒 Sana: {date_str}"
-        for user_id in list(ALLOWED_USERS.keys()):
+        for uid in ALLOWED_USERS.keys():
             try:
-                await bot.send_message(user_id, text)
+                await bot.send_message(int(uid), text)
             except Exception as e:
-                logger.warning("Telegramga yuborilmadi %s: %s", user_id, e)
+                logger.warning("Xabar yuborilmadi %s: %s", uid, e)
 
-        return web.json_response({"status": "success"}, headers={
-            "Access-Control-Allow-Origin": "*"
-        })
+        return web.json_response({"status": "success"}, headers={"Access-Control-Allow-Origin": "*"})
 
     except Exception as e:
-        logger.exception("handle_form umumiy xato: %s", e)
-        return web.json_response({"status": "error", "message": str(e)}, headers={
-            "Access-Control-Allow-Origin": "*"
-        })
+        logger.exception("handle_form xato: %s", e)
+        return web.json_response({"status": "error", "message": str(e)}, headers={"Access-Control-Allow-Origin": "*"})
 
-# Preflight (CORS) uchun OPTIONS
 async def handle_options(request):
     return web.Response(status=204, headers={
         "Access-Control-Allow-Origin": "*",
@@ -171,14 +211,12 @@ app.router.add_post("/form", handle_form)
 
 # =============== RUN BOTH BOT & WEB ===============
 async def main():
-    # run web server
     runner = web.AppRunner(app)
     await runner.setup()
     site = web.TCPSite(runner, "0.0.0.0", 8080)
     await site.start()
     logger.info("🌐 Web server running on http://0.0.0.0:8080")
 
-    # start bot polling
     logger.info("🤖 Bot polling started")
     await dp.start_polling(bot)
 
