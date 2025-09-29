@@ -61,9 +61,18 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const formData = new FormData(form);
 
+            // FormData ni URLSearchParams ga aylantiramiz
+            const urlParams = new URLSearchParams();
+            for (const pair of formData) {
+                urlParams.append(pair[0], pair[1]);
+            }
+
             const response = await fetch(SCRIPT_URL, {
                 method: "POST",
-                body: formData,
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+                },
+                body: urlParams.toString(),
             });
 
             if (response.ok) {
@@ -84,3 +93,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+
