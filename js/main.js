@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const status = document.getElementById("form-status");
 
     // BU YERGA O'ZINGIZNING GOOGLE SCRIPT URLINGIZNI QO'YING:
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwRXhmHRwFBQ7m7gSQVwgUoh4f_QMFvMAbBYY_-RMOVKhkXPt59vuSpSoDQL9zLefSg8A/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwQzMNG-PQvUrfd3kBvYACuA6fL8ApGB5RziE6FLpd36Z0PJyQMj33kqczQhXADI2Xc/exec";
 
     form?.addEventListener("submit", async (e) => {
         e.preventDefault();
