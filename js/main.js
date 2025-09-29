@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     mobileBurger?.addEventListener("click", () => toggleMenu(mobileBurger));
     desktopBurger?.addEventListener("click", () => toggleMenu(desktopBurger));
 
-    navLinks.forEach((link) => {
+    navLinks.forEach(link => {
         link.addEventListener("click", () => {
             navList.classList.remove("show");
             mobileBurger?.classList.remove("active");
@@ -23,20 +23,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* ------------------------ FAQ ACCORDION ------------------------ */
     const faqItems = document.querySelectorAll(".faq-item");
-    faqItems.forEach((item) => {
+
+    faqItems.forEach(item => {
         const question = item.querySelector(".faq-question");
         const answer = item.querySelector(".faq-answer");
 
         question?.addEventListener("click", () => {
-            // Boshqa itemlarni yopish
-            faqItems.forEach((i) => {
+            faqItems.forEach(i => {
                 if (i !== item) {
                     i.querySelector(".faq-answer").style.maxHeight = null;
                     i.classList.remove("active");
                 }
             });
 
-            // O'zi uchun toggle qilish
             if (answer.style.maxHeight) {
                 answer.style.maxHeight = null;
                 item.classList.remove("active");
@@ -50,12 +49,12 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ------------------------ CONTACT FORM ------------------------ */
     const form = document.querySelector(".contact-form");
     const status = document.getElementById("form-status");
-    const SCRIPT_URL =
-        "https://script.google.com/macros/s/AKfycbyhorZCWbxuro0frkUqIlfvGSPHEH8yoOiLvT6NCPQLWRmpx2yGg9gpa7r3ddSoXG-JwA/exec";
+
+    // BU YERGA O'ZINGIZNING GOOGLE SCRIPT URLINGIZNI QO'YING:
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwRXhmHRwFBQ7m7gSQVwgUoh4f_QMFvMAbBYY_-RMOVKhkXPt59vuSpSoDQL9zLefSg8A/exec";
 
     form?.addEventListener("submit", async (e) => {
         e.preventDefault();
-
         status.textContent = "⏳ Yuborilmoqda...";
         status.style.color = "blue";
 
@@ -71,14 +70,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 status.textContent = "✅ Ma'lumot muvaffaqiyatli yuborildi!";
                 status.style.color = "green";
                 form.reset();
+
+                // Agar sahifani yangilamoqchi bo‘lsangiz:
+                // setTimeout(() => window.location.reload(), 2000);
             } else {
-                status.textContent = "❌ Yuborishda xatolik yuz berdi. Iltimos, qayta urinib ko‘ring.";
+                status.textContent = "❌ Yuborishda xatolik yuz berdi.";
                 status.style.color = "red";
             }
         } catch (error) {
-            console.error("Fetch error:", error);
-            status.textContent =
-                "❌ Yuborishda xatolik yuz berdi. Iltimos, qayta urinib ko‘ring.";
+            console.error("Xatolik:", error);
+            status.textContent = "❌ Server bilan bog‘lanib bo‘lmadi. Qayta urinib ko‘ring.";
             status.style.color = "red";
         }
     });
