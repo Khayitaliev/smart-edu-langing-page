@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const answer = item.querySelector(".faq-answer");
 
         question?.addEventListener("click", () => {
+            // Boshqa itemlarni yopish
             faqItems.forEach((i) => {
                 if (i !== item) {
                     i.querySelector(".faq-answer").style.maxHeight = null;
@@ -35,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
 
+            // O'zi uchun toggle qilish
             if (answer.style.maxHeight) {
                 answer.style.maxHeight = null;
                 item.classList.remove("active");
@@ -58,33 +60,20 @@ document.addEventListener("DOMContentLoaded", () => {
         status.style.color = "blue";
 
         try {
-            // Agar sizda ex va age checkboxlari bo'lsa ularni qo'shish
             const formData = new FormData(form);
-            const ex = document.getElementById("ex")?.checked;
-            const age = document.getElementById("age")?.checked;
-
-            formData.set("ex", ex ? "Yes" : "No");
-            formData.set("age", age ? "Yes" : "No");
 
             const response = await fetch(SCRIPT_URL, {
                 method: "POST",
                 body: formData,
-                // mode: "no-cors" // Agar kerak bo'lsa oching
             });
 
-            let result = {};
-            try {
-                result = await response.json();
-            } catch {
-                // Agar json o'qib bo'lmasa, muammo yo'q
-            }
-
-            if (result.result === "success" || response.ok) {
+            if (response.ok) {
                 status.textContent = "✅ Ma'lumot muvaffaqiyatli yuborildi!";
                 status.style.color = "green";
                 form.reset();
             } else {
-                throw new Error(result.error || "Serverdan noaniq xatolik yuz berdi");
+                status.textContent = "❌ Yuborishda xatolik yuz berdi. Iltimos, qayta urinib ko‘ring.";
+                status.style.color = "red";
             }
         } catch (error) {
             console.error("Fetch error:", error);
