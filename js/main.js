@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const statusEl = document.getElementById("form-status");
 
     // BU YERGA O'Z SCRIPT URL'NI QO'YING (Web App URL)
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzbUleFziSmY_bi_ZiVMBJ1w3Lacw0kwiWhRowbTo27kZ_cfK2exQ-xahIUyXftrleGAw/exec"; // ---> o'zgartiring
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwBVQ9-HjckGA11gF-H7eEYyHzKowb_Jfnpx_OObVwyeNitn2sPUjw-mh6Tl8990Sw0Yw/exec"; // ---> o'zgartiring
 
     // Yordamchi: status ko'rsatish
     const showStatus = ({ text = '', type = 'info', autoHide = true, timeout = 4000 }) => {
