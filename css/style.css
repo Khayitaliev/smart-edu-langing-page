@@ -37,21 +37,8 @@ yoki #FF7043 (apelsin rang) – iliqlik qo‘shadi */
 
 /* Fonts */
 
-@font-face {
-    font-family: "Poppins";
-    src: url(/fonts/Poppins-Black.ttf);
-    font-style: normal;
-    font-weight: 900;
-    font-display: swap;
-}
 
-@font-face {
-    font-family: "Poppins";
-    src: url(/fonts/Poppins-ExtraBold.ttf);
-    font-style: normal;
-    font-weight: 800;
-    font-display: swap;
-}
+
 
 @font-face {
     font-family: 'Poppins';
@@ -70,13 +57,7 @@ yoki #FF7043 (apelsin rang) – iliqlik qo‘shadi */
     font-display: swap;
 }
 
-@font-face {
-    font-family: "Poppins";
-    src: url(/fonts/Poppins-Medium.ttf);
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-}
+
 
 @font-face {
     font-family: "Poppins";
@@ -86,21 +67,7 @@ yoki #FF7043 (apelsin rang) – iliqlik qo‘shadi */
     font-display: swap;
 }
 
-@font-face {
-    font-family: "Poppins";
-    src: url(/fonts/Poppins-Light.ttf);
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-}
 
-@font-face {
-    font-family: "Poppins";
-    src: url(/fonts/Poppins-ExtraLight.ttf);
-    font-style: normal;
-    font-weight: 200;
-    font-display: swap;
-} 
 *,
 *::before,
 *::after{

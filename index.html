@@ -1,42 +1,66 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Basic Meta Information -->
-    <meta name="description" content="Smart Education - O'quvchilarga yuqori sifatli ta'lim taqdim etadigan markaz. Bizning kurslar orqali kelajakni yarating!">
-    <meta name="keywords" content="Smart Education, kurslar, ta'lim, o'quv markazi, ona tili, matematika, kimyo, biologiya, ingliz tili, rus tili, web dasturlash">
-    <meta name="author" content="Smart Education">
-    
-    <!-- Icon -->
-    <link rel="icon" type="image/x-icon" href="/images/logo.webp">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Preload CSS files -->
-    <link rel="preload" href="normalize/normalize.css" as="style">
-    <link rel="preload" href="css/style.css" as="style">
-    <link rel="preload" href="css/media.css" as="style">
+  <!-- 🔍 SEO Meta -->
+  <meta name="description" content="Smart Education - O'quvchilarga yuqori sifatli ta'lim taqdim etadigan markaz. Bizning kurslar orqali kelajakni yarating!" />
+  <meta name="keywords" content="Smart Education, kurslar, ta'lim, o'quv markazi, ona tili, matematika, kimyo, biologiya, ingliz tili, rus tili, web dasturlash" />
+  <meta name="author" content="Smart Education" />
+  <link rel="canonical" href="https://smart-education.uz/" />
 
-    <!-- Preload Font Awesome CSS file -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" as="style" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <!-- 🎨 Brauzer rang (mobil toolbar uchun) -->
+  <meta name="theme-color" content="#2575fc" />
 
-    <!-- Preloading Poppins fontlar -->
-    <link rel="preload" href="/fonts/Poppins-Black.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="/fonts/Poppins-ExtraBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="/fonts/Poppins-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="/fonts/Poppins-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="/fonts/Poppins-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="/fonts/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="/fonts/Poppins-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="/fonts/Poppins-ExtraLight.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <!-- Main CSS files -->
-    <link rel="stylesheet" href="normalize/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/media.css">
+  <!-- 📢 Social Preview (Open Graph & Twitter) -->
+  <meta property="og:title" content="Smart Education – Ta’lim markazi" />
+  <meta property="og:description" content="Smart Education – zamonaviy o‘quv markazi. Kurslar, ustozlar, ta’lim sifatida yetakchi." />
+  <meta property="og:image" content="https://smart-education.uz/images/logo.webp" />
+  <meta property="og:url" content="https://smart-education.uz/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Font Awesome (Actual link) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <title>Smart Education</title>
+  <!-- 🧩 Favicon -->
+  <link rel="icon" type="image/webp" href="/images/logo.webp" />
+
+  <!-- ⚡ Preload: CSS -->
+  <link rel="preload" href="normalize/normalize.css" as="style" />
+  <link rel="preload" href="css/style.css" as="style" />
+  <link rel="preload" href="css/media.css" as="style" />
+
+  <!-- ⚡ Preload: Fontlar (faqat keraklilari) -->
+  <link rel="preload" href="/fonts/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+  <link rel="preload" href="/fonts/Poppins-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+  <link rel="preload" href="/fonts/Poppins-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+  <!-- ⚡ Preload: Font Awesome -->
+  <link
+    rel="preload"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    as="style"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- 🎨 Asosiy CSS -->
+  <link rel="stylesheet" href="normalize/normalize.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/media.css" />
+
+  <!-- 💠 Font Awesome (asosiy ulanish) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <title>Smart Education – Ta’lim markazi</title>
 </head>
+
 <body>
     <!-- Header -->
      <header>
@@ -52,7 +76,7 @@
                 <!-- /End Brand Logo -->
 
                 <!-- Navigation -->
-                 <nav class="nav">
+                 <nav class="nav" aria-label="Asosiy navigatsiya">
                     <ul class="nav__list">
                         <!-- Main -->
                         <li class="list-item">
@@ -309,18 +333,18 @@
                 </div>
                 <div class="footer__contact">
                     <h4>Kontaktlar</h4>
-                    <p>Email: info@smartedu.uz</p>
-                    <p>Tel: +998 90 123 45 67</p>
+                    <p>Email: smartsclub@mail.ru</p>
+                    <p>Tel: +998 99 055 05 93</p>
                     <div class="social-icons">
-                        <a href="https://www.instagram.com/smart.edu.narin?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://t.me/Smart_qabulxona" class="telegram"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="https://www.instagram.com/smart.edu.narin?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="instagram" rel="noopener noreferrer" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://t.me/Smart_qabulxona" class="telegram" rel="noopener noreferrer" target="_blank"><i class="fab fa-telegram-plane"></i></a>
                     </div>
                 </div>
                 </div>
             <div class="footer__bottom">
                 &copy; 2025 Smart Education. Barcha huquqlar himoyalangan. 
                 <br>
-                <span>Created by <a href="https://github.com/Khayitaliev" target="_blank">Bekhruz Khayitaliev</a></span>
+                <span>Created by <a href="https://github.com/Khayitaliev" target="_blank" rel="noopener noreferrer">Bekhruz Khayitaliev</a></span>
             </div>
         </div>
     </footer>
